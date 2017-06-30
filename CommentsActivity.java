@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.codingblocks.restapiretrofitjson.adapters.CommentAdapter;
+import com.codingblocks.restapiretrofitjson.api.API;
 import com.codingblocks.restapiretrofitjson.api.CommentsAPI;
 import com.codingblocks.restapiretrofitjson.models.Comment;
 
@@ -38,14 +39,15 @@ public class CommentsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(commentAdapter);
 
-        Retrofit retrofit
-                = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://jsonplaceholder.typicode.com")
-                .build();
+//        Retrofit retrofit
+//                = new Retrofit.Builder()
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .baseUrl("https://jsonplaceholder.typicode.com")
+//                .build();
 
         CommentsAPI commentsAPI
-                = retrofit.create(CommentsAPI.class);
+//                = retrofit.create(CommentsAPI.class);
+                = API.getAPIinstance().getCommentsAPI();
 
         Callback<ArrayList<Comment>> commentsCallback
                 = new Callback<ArrayList<Comment>>() {
